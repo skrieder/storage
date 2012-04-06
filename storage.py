@@ -10,9 +10,27 @@ def Insert(key, value):
         return True
     except:
         return False
+# declare the insert folder
+def InsertAll(key, value):
+    try:
+        print("in insert folder")
+        insertCMD = 'gsutil cp -R '+ sys.argv[2] + ' ' + 'gs://' + bucketName
+        os.system(insertCMD)
+        return True
+    except:
+        return False
 
 # declare the delete
 def Remove(key):
+    try:
+        removeCMD = 'gsutil rm gs://'+ bucketName + '/' + sys.argv[2]
+        os.system(removeCMD)
+        return True
+    except:
+        return False
+
+# declare the delete all
+def RemoveAll(key):
     try:
         removeCMD = 'gsutil rm gs://'+ bucketName + '/' + sys.argv[2]
         os.system(removeCMD)
@@ -80,10 +98,17 @@ def manual():
 ###main program###
 if(len(sys.argv) > 1):
     if(sys.argv[1] == 'insert'):
-        Insert(sys.argv[2], sys.argv[2])
+        if(len(sys.argv) > 2):
+            Insert(sys.argv[2], sys.argv[2])
+    elif(sys.argv[1] == 'insertall'):
+        if(len(sys.argv) > 2):
+            InsertAll(sys.argv[2], sys.argv[2])
     elif(sys.argv[1] == 'remove'):
         if(len(sys.argv) > 2):
             Remove(sys.argv[2])
+    elif(sys.argv[1] == 'removeall'):
+        if(len(sys.argv) > 2):
+            RemoveAll(sys.argv[2])
     elif(sys.argv[1] == 'check'):
         if(len(sys.argv) > 2):
             Check(sys.argv[2])
