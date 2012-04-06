@@ -32,7 +32,7 @@ def Remove(key):
 # declare the delete all
 def RemoveAll(key):
     try:
-        removeCMD = 'gsutil rm gs://'+ bucketName + '/' + sys.argv[2]
+        removeCMD = 'gsutil rm -R gs://'+ bucketName + '/*'
         os.system(removeCMD)
         return True
     except:
