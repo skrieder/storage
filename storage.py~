@@ -66,9 +66,8 @@ def Find(key):
         ins3 = open( key, "r" )
         for line3 in ins3:
             str3 += line3
-        print(str3)
+        #print(str3)
         return(str3)
-        #print("File Found!")
     else:
         print("File Not Found!")
         return NULL

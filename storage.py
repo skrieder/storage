@@ -5,7 +5,7 @@ bucketName = 'skrieder'
 # declare the insert
 def Insert(key, value):
     try:
-        insertCMD = 'gsutil cp '+ sys.argv[2] + ' ' + 'gs://skrieder'
+        insertCMD = 'gsutil cp '+ sys.argv[2] + ' ' + 'gs://' + bucketName
         os.system(insertCMD)
         return True
     except:
@@ -14,7 +14,7 @@ def Insert(key, value):
 # declare the delete
 def Remove(key):
     try:
-        removeCMD = 'gsutil rm gs://skrieder/' + sys.argv[2]
+        removeCMD = 'gsutil rm gs://'+ bucketName + '/' + sys.argv[2]
         os.system(removeCMD)
         return True
     except:
@@ -28,7 +28,7 @@ def Listing(key):
         #declare constant for gs://
         pre = 6
         # write the output file
-        checkCMD = 'gsutil ls gs://skrieder/ > ~/Desktop/storage/output.txt'
+        checkCMD = 'gsutil ls gs://' + bucketName + '/ > ~/Desktop/storage/output.txt'
         os.system(checkCMD)
         # declare the array
         array2 = []
@@ -46,7 +46,7 @@ def Listing(key):
 def Check(key):
     try:
         CheckArray = []
-        CheckArray = Listing('skrieder')
+        CheckArray = Listing('bucketName')
         KeyToCheck = sys.argv[2]
         if KeyToCheck in CheckArray:
             # print("Key Found!")
@@ -60,7 +60,7 @@ def Check(key):
 # declare the find
 def Find(key):
     if Check(key) == True:
-        os.system('gsutil cp gs://skrieder/' + key + ' ~/Desktop/storage/')
+        os.system('gsutil cp gs://' + bucketName + '/' + key + ' ~/Desktop/storage/')
         #os.system('cat ~/Desktop/storage/'+ key)
         str3 = ""
         ins3 = open( key, "r" )
@@ -99,11 +99,5 @@ if(len(sys.argv) > 1):
 else:
     print('python storage.py "command"')
     print('type python storage.py help for the manual')
-
-#bucketName = raw_input("Please enter the name of the bucket: ")
-#list = 'gsutil ls gs://'
-
-#cmd = list + bucketName
-#os.system(cmd)
 
 
