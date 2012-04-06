@@ -1,3 +1,4 @@
+gs://skrieder/another.txt
 gs://skrieder/test.txt
 gs://skrieder/test2.txt
 gs://skrieder/test3.txt

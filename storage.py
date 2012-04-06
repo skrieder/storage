@@ -46,7 +46,7 @@ def Listing(key):
 def Check(key):
     try:
         CheckArray = []
-        CheckArray = Listing('bucketName')
+        CheckArray = Listing(bucketName)
         KeyToCheck = sys.argv[2]
         if KeyToCheck in CheckArray:
             # print("Key Found!")
@@ -61,7 +61,6 @@ def Check(key):
 def Find(key):
     if Check(key) == True:
         os.system('gsutil cp gs://' + bucketName + '/' + key + ' ~/Desktop/storage/')
-        #os.system('cat ~/Desktop/storage/'+ key)
         str3 = ""
         ins3 = open( key, "r" )
         for line3 in ins3:
@@ -70,7 +69,7 @@ def Find(key):
         return(str3)
     else:
         print("File Not Found!")
-        return NULL
+        return False
 
 # declare the manual
 def manual():
@@ -82,20 +81,20 @@ def manual():
 if(len(sys.argv) > 1):
     if(sys.argv[1] == 'insert'):
         Insert(sys.argv[2], sys.argv[2])
+    elif(sys.argv[1] == 'remove'):
+        if(len(sys.argv) > 2):
+            Remove(sys.argv[2])
+    elif(sys.argv[1] == 'check'):
+        if(len(sys.argv) > 2):
+            Check(sys.argv[2])
+    elif(sys.argv[1] == 'listing'):
+        if(len(sys.argv) > 2):
+            Listing(sys.argv[2])
+    elif(sys.argv[1] == 'find'):
+        if(len(sys.argv) > 2):
+            Find(sys.argv[2])
     elif(sys.argv[1] == 'help'):
         manual()
-    elif(sys.argv[1] == 'manual'):
-        manual()
-    elif(sys.argv[1] == 'man'):
-        manual()
-    elif(sys.argv[1] == 'remove'):
-        Remove(sys.argv[2])
-    elif(sys.argv[1] == 'check'):
-        Check(sys.argv[2])
-    elif(sys.argv[1] == 'listing'):
-        Listing(sys.argv[2])
-    elif(sys.argv[1] == 'find'):
-        Find(sys.argv[2])
 else:
     print('python storage.py "command"')
     print('type python storage.py help for the manual')
