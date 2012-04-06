@@ -1,0 +1,4 @@
+gs://skrieder/test.txt
+gs://skrieder/test2.txt
+gs://skrieder/test3.txt
+gs://skrieder/textfile.txt
