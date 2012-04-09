@@ -1,3 +1,4 @@
+from google.appengine.api import memcache
 import os
 import sys
 

@@ -1,0 +1,31 @@
+// Include the time.h library
+#include<time.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int main(int argc, char* argv[])
+{
+  for(int i =0; i < 10; i++){
+    char *buffer;
+    long bSize = 1024;
+    int blockSize = 1024;
+    long iterations = bSize/blockSize;
+  
+    buffer = (char*)malloc(bSize);
+    memset(buffer, 'x', bSize);
+  
+    FILE * pFile;
+    
+    char fName[5];
+
+    //itoa(i, buf, 10);
+    
+    fName = ("%i-1KB.txt", i);
+
+    pFile = fopen (fName, "w" );
+    fwrite(buffer, blockSize, iterations, pFile);
+    fclose(pFile);
+  }
+}
+
