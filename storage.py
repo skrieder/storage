@@ -19,6 +19,15 @@ def InsertAll(key, value):
         return True
     except:
         return False
+# declare the insert folder with threads
+def InsertAllT(key, value):
+    try:
+        print("in insert folder")
+        insertCMD = 'gsutil -m cp -R '+ sys.argv[2] + ' ' + 'gs://' + bucketName
+        os.system(insertCMD)
+        return True
+    except:
+        return False
 
 # declare the delete
 def Remove(key):
@@ -33,6 +42,14 @@ def Remove(key):
 def RemoveAll(key):
     try:
         removeCMD = 'gsutil rm -R gs://'+ bucketName + '/*'
+        os.system(removeCMD)
+        return True
+    except:
+        return False
+# declare the delete all with threads
+def RemoveAllT(key):
+    try:
+        removeCMD = 'gsutil -m rm -R gs://'+ bucketName + '/*'
         os.system(removeCMD)
         return True
     except:
@@ -103,12 +120,18 @@ if(len(sys.argv) > 1):
     elif(sys.argv[1] == 'insertall'):
         if(len(sys.argv) > 2):
             InsertAll(sys.argv[2], sys.argv[2])
+    elif(sys.argv[1] == 'insertallt'):
+        if(len(sys.argv) > 2):
+            InsertAllT(sys.argv[2], sys.argv[2])
     elif(sys.argv[1] == 'remove'):
         if(len(sys.argv) > 2):
             Remove(sys.argv[2])
     elif(sys.argv[1] == 'removeall'):
         if(len(sys.argv) > 2):
             RemoveAll(sys.argv[2])
+    elif(sys.argv[1] == 'removeallt'):
+        if(len(sys.argv) > 2):
+            RemoveAllT(sys.argv[2])
     elif(sys.argv[1] == 'check'):
         if(len(sys.argv) > 2):
             Check(sys.argv[2])

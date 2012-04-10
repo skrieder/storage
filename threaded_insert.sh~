@@ -1,0 +1,1 @@
+time python storage.py insertall genFiles skrieder
