@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[])
 {
-  for(int i =0; i < 10; i++){
+  for(int i = 1; i < 101; i++){
     char *buffer;
     long bSize = 1024;
     int blockSize = 1024;
@@ -18,15 +18,19 @@ int main(int argc, char* argv[])
     FILE * pFile;
     
     char fName[5];
-    char buf[5];
-    
-    char* first = itoa(i, buf, 10);
-    char* second = "-1KB.txt";
-    char* both = malloc(strlen(first) + strlen(second) + 2);
+    //    char buf[5];
+    //sprintf(buf, )
+    //    char* first = itoa(i, buf, 10);
+    //char* second = "-1KB.txt";
+    //char* both = malloc(strlen(first) + strlen(second) + 2);
 
-    sprintf("%s %s", first, second);
+    //sprintf("%s %s", first, second);
 
-    fName = "1KB.txt";
+    sprintf(fName,"%i" ,i);
+    //printf("%s",fName);
+    //fName = sprintf("%i", i);
+
+    //fName = i;
 
     pFile = fopen (fName, "w" );
     fwrite(buffer, blockSize, iterations, pFile);
