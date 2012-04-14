@@ -1,6 +1,3 @@
-gs://skrieder/another.txt
-gs://skrieder/test.txt
-gs://skrieder/test2.txt
-gs://skrieder/test3.txt
-gs://skrieder/testSCOTT.txt
-gs://skrieder/textfile.txt
+gs://skrieder/1
+gs://skrieder/10
+gs://skrieder/genFiles/
